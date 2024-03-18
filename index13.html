@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Features</title>
+    <style>
+        /* Basic styling for the image slider */
+        
+        .slider-container {
+            width: 300px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            width: 100%;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Image Slider -->
+    <div class="slider-container">
+        <div class="slide"><img src="img1.jpg" alt="Image 1"></div>
+        <div class="slide"><img src="img2.jpg" alt="Image 2"></div>
+        <div class="slide"><img src="img3.jpeg" alt="Image 3"></div>
+        <div class="slide"><img src="IMG.jpeg" alt="Image 4"></div>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <form>
+        <select id="myDropdown">
+            <option value="0">Select a slide</option>
+            <option value="1">Slide 1</option>
+            <option value="2">Slide 2</option>
+            <option value="3">Slide 3</option>
+            <option value="4">Slide 4</option>
+        </select>
+    </form>
+
+    <script>
+        // Image Slider
+        const slides = document.querySelectorAll('.slide');
+        const dropdown = document.getElementById('myDropdown');
+
+        dropdown.addEventListener('change', () => {
+            const selectedSlide = parseInt(dropdown.value);
+            slides.forEach((slide, index) => {
+                slide.style.display = index === selectedSlide ? 'block' : 'none';
+            });
+        });
+
+        // Form Validation
+        const form = document.getElementById('myForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            if (username && email) {
+                alert('Form submitted successfully!');
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+
+</html>

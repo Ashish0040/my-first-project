@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM Manipulation Example</title>
+</head>
+
+<body>
+
+    <h1 id="mainHeading">Hello, User!</h1>
+
+    <p id="Paragraph">LNCT University has established itself as a leader in New era of education. Have done Its commitment to meeting the growing demand for higher education in India has led to innovative approaches to teaching and learning, with an emphasis on hands-on
+        training and hands-on experience..</p>
+    <button onclick="changeContent()">Change Content</button>
+    <script>
+        // Function to change content
+            
+        function changeContent() {       // Access elements by ID
+                  
+            let headingElement = document.getElementById("mainHeading");      
+            let paragraphElement = document.getElementById("demoParagraph");
+
+                   // Modify content
+                  
+            headingElement.textContent = "DOM Manipulation Example";      
+            paragraphElement.innerHTML = "Content changed dynamically! <strong>Wow!</strong>";       // Create a new element and append it
+                  
+            let newParagraph = document.createElement("p");      
+            newParagraph.textContent = "This is a new paragraph.";       // Append the new paragraph to the body
+                  
+            document.body.appendChild(newParagraph);    
+        }
+    </script>
+</body>
+
+</html>

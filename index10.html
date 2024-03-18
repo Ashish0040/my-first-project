@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Page</title>
+</head>
+
+<body>
+    <h1 id="myHeading">Java Script</h1>
+    <button id="myButton">Click me</button>
+
+    <script>
+        // Get a reference to the button and heading elements
+        const button = document.getElementById('myButton');
+        const heading = document.getElementById('myHeading');
+
+        // Add an event listener to the button
+        button.addEventListener('click', () => {
+            // Change the text content of the heading when the button is clicked
+            heading.textContent = 'Button clicked!';
+        });
+    </script>
+</body>
+
+</html>
