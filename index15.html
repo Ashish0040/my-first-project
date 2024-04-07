@@ -1,48 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJAX Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-
-
-    <h1 id="dynamicContent">Initial Content</h1>
-    <button onclick="updateContent()">Update Content</button>
+    <div id="demo">
+        <h1>Click the button to change this text</h1>
+        <p>
+            <li>JavaScript is a programming language that is one of the core technologies of the web, alongside HTML and CSS.
+            </li>
+            <li>It enables interactive web pages and is an essential part of web applications. </li>
+            <li> majority of websites use it, and all modern web browsers have a dedicated JavaScript engine to execute it.</li>
+        </p>
+        <button id="button" type="button">Change Content</button>
+    </div>
     <script>
-        function updateContent() {       // Create a new XMLHttpRequest object
-                  
-            const xhr = new XMLHttpRequest();
+        $(function() {
+            // Optional: Disable caching to force fresh content
+            $.ajaxSetup({
+                cache: false
+            });
 
-                   // Specify the type of request (GET) and the URL endpoint
-                  
-            xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/1', true);
+            // Specify the server URL from which to load data
+            var url = "https://jsonplaceholder.typicode.com/";
 
-                   // Set up a callback function to handle the response
-                  
-            xhr.onload = function() {        
-                if (xhr.status === 200) {           // Parse the JSON response
-                              
-                    const responseData = JSON.parse(xhr.responseText);
-
-                               // Update the content on the webpage
-                              
-                    document.getElementById('dynamicContent').textContent = responseData.title;        
-                } else {          
-                    console.error('Request failed. Status:', xhr.status);        
-                }      
-            };
-
-                   // Send the request
-                  
-            xhr.send();    
-        }
+            // When the button is clicked, load data dynamically into the #demo div
+            // While loading, display three dots (...)
+            $("#button").click(function() {
+                $("#demo").html("...").load(url);
+            });
+        });
     </script>
-
 </body>
 
 </html>
